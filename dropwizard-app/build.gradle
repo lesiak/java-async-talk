@@ -1,15 +1,7 @@
-apply plugin: 'java'
-buildscript {
-  repositories {
-    jcenter()
-  }
-
-  dependencies {
-    classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
-
-  }
+plugins {
+  id 'java'
+  id "com.github.johnrengelman.shadow" version "7.1.2"
 }
-apply plugin: 'com.github.johnrengelman.shadow'
 
 jar {
   manifest {
@@ -36,22 +28,22 @@ task dockerBuild(type: Exec, dependsOn: 'copyJar') {
 
 build.dependsOn(dockerBuild)
 
-project.ext {               
-  dropwizardVersion = '0.9.2' 
+project.ext {
+  dropwizardVersion = '0.9.2'
 }
 
 repositories {
   mavenCentral()
-}               
+}
 
 dependencies {
-  compile group: 'io.dropwizard', name: 'dropwizard-core', version: dropwizardVersion
-  compile group: 'io.dropwizard', name: 'dropwizard-client', version: dropwizardVersion
-  compile 'org.glassfish.jersey.ext.rx:jersey-rx-client-java8:2.23'
-  compile 'org.asynchttpclient:async-http-client:2.0.4'
-  compile 'org.asynchttpclient:async-http-client-extras-guava:2.0.4'
-  compile 'com.google.guava:guava:19.0'
-  compile project(":standalone")
+  implementation group: 'io.dropwizard', name: 'dropwizard-core', version: dropwizardVersion
+  implementation group: 'io.dropwizard', name: 'dropwizard-client', version: dropwizardVersion
+  implementation 'org.glassfish.jersey.ext.rx:jersey-rx-client-java8:2.23'
+  implementation 'org.asynchttpclient:async-http-client:2.0.4'
+  implementation 'org.asynchttpclient:async-http-client-extras-guava:2.0.4'
+  implementation 'com.google.guava:guava:19.0'
+  implementation project(":standalone")
 }
 
 

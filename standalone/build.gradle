@@ -1,15 +1,7 @@
-apply plugin: 'java'
-buildscript {
-  repositories {
-    jcenter()
-  }
-
-  dependencies {
-    classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
-
-  }
+plugins {
+  id 'java'
+  id "com.github.johnrengelman.shadow" version "7.1.2"
 }
-apply plugin: 'com.github.johnrengelman.shadow'
 
 jar {
   manifest {
@@ -27,18 +19,18 @@ sourceCompatibility = 1.8
 
 repositories {
   mavenCentral()
-}               
+}
 
 dependencies {
-  compile 'com.google.guava:guava:19.0'
-  compile 'io.reactivex:rxjava:1.1.5'
-  compile 'ch.qos.logback:logback-classic:1.1.7'
-  compile 'org.asynchttpclient:async-http-client-extras-guava:2.0.4'
-  compile 'org.asynchttpclient:async-http-client:2.0.4'
+  implementation 'com.google.guava:guava:19.0'
+  implementation 'io.reactivex:rxjava:1.1.5'
+  implementation 'ch.qos.logback:logback-classic:1.1.7'
+  implementation 'org.asynchttpclient:async-http-client-extras-guava:2.0.4'
+  implementation 'org.asynchttpclient:async-http-client:2.0.4'
 
-//  compile ''
+//  implementation ''
 
-  testCompile 'junit:junit:4.12'
+  testImplementation 'junit:junit:4.12'
 }
 
 
